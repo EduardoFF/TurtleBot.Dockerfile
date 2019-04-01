@@ -1,5 +1,5 @@
 #FROM ros:indigo-robot
-FROM ros:kinetic
+FROM ros:kinetic-robot
 MAINTAINER Chris Timperley "christimperley@googlemail.com"
 
 # Fix inability to launch avahi-daemon correctly
@@ -28,16 +28,9 @@ RUN cd /lib/systemd/system/sysinit.target.wants/; ls | grep -v systemd-tmpfiles-
 ENV init /lib/systemd/systemd
 VOLUME ["/sys/fs/cgroup"]
 
-# install and register Kinect
-ENV TURTLEBOT_3D_SENSOR kinect
-RUN cd /tmp &&\
-    wget -q https://github.com/avin2/SensorKinect/archive/v0.93-5.1.2.1.tar.gz &&\
-    tar -xf v0.93-5.1.2.1.tar.gz &&\
-    cd SensorKinect-0.93-5.1.2.1/Bin &&\
-    tar xjf SensorKinect093-Bin-Linux-x64-v5.1.2.1.tar.bz2 &&\
-    cd Sensor-Bin-Linux-x64-v5.1.2.1 &&\
-    bash install.sh &&\
-    rm -rf /tmp/v0.93-5.1.2.1.tar.gz /tmp/SensorKinect-0.93-5.1.2.1
+# register astra
+ENV TURTLEBOT_3D_SENSOR astra
+
 
 # Add entrypoint
 ADD turtlebot_entrypoint.sh /turtlebot_entrypoint.sh
