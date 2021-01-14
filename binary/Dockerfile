@@ -1,5 +1,5 @@
-FROM christimperley/turtlebot:base
-MAINTAINER Chris Timperley "christimperley@googlemail.com"
+FROM eduardofeo/turtlebot:base
+MAINTAINER Eduardo Feo "eduardofeo@gmail.com"
 
 RUN apt-get update &&\
     apt-get install -y  ros-kinetic-turtlebot\

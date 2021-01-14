@@ -1,9 +1,10 @@
-#FROM ros:indigo-robot
+# Based on christimperley/turtlebot:base
 FROM ros:kinetic-robot
-MAINTAINER Chris Timperley "christimperley@googlemail.com"
+MAINTAINER Eduardo Feo "eduardofeo@gmail.com"
 
 # Fix inability to launch avahi-daemon correctly
 # Modified instructions from https://github.com/dockerimages/docker-systemd
+RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 RUN apt-get update && \
     apt-get install -y  wget \
                         libnss-mdns \
